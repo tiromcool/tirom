@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سردخانه تیرم - کارت ویزیت آنلاین</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* تنظیم فونت و تم رنگی */
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f0f8ff; /* رنگ پس‌زمینه بسیار روشن */
+        }
+        .card-container {
+            box-shadow: 0 10px 30px rgba(0, 70, 150, 0.1);
+            background: linear-gradient(145deg, #ffffff, #e6f7ff); /* گرادیانت ملایم */
+        }
+        .share-button {
+            transition: all 0.2s;
+        }
+        .share-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+        }
+        .icon-link {
+            transition: transform 0.2s;
+        }
+        .icon-link:hover {
+            transform: scale(1.05);
+        }
+    </style>
+    <!-- آیکون‌های لوسید برای ظاهر مدرن -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="p-4 flex flex-col items-center min-h-screen">
+
+    <div class="card-container w-full max-w-lg mx-auto rounded-3xl p-6 md:p-8 space-y-8 border border-blue-200">
+
+        <!-- بخش دکمه اشتراک‌گذاری بالا -->
+        <button id="shareButtonTop" class="share-button w-full bg-blue-600 text-white p-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 text-lg">
+            <i data-lucide="share-2" class="w-5 h-5"></i>
+            اشتراک‌گذاری این کارت
+        </button>
+
+        <!-- بخش لوگو و عنوان -->
+        <div class="text-center">
+            <!-- تصویر Placeholder برای لوگو - جایگزین کردن با لینک مستقیم لوگوی "سردخانه تیرم" -->
+            <img src="https://placehold.co/400x150/0047AB/ffffff?text=سردخانه+تیرم"
+                 onerror="this.onerror=null;this.src='https://placehold.co/400x150/0047AB/ffffff?text=سردخانه+تیرم'"
+                 alt="لوگوی سردخانه تیرم"
+                 class="w-full h-auto max-h-36 object-cover mx-auto rounded-xl mb-4 border-4 border-blue-500 shadow-md">
+            
+            <h1 class="text-4xl font-black text-blue-900 mt-2 mb-1">سردخانه تیرم</h1>
+            <p class="text-lg text-gray-600">خدمات نوین نگهداری محصولات کشاورزی</p>
+        </div>
+
+        <!-- --- اطلاعات تماس --- -->
+        <div class="space-y-4 pt-4 border-t border-blue-100">
+            <h2 class="text-2xl font-extrabold text-blue-700 border-b-2 border-blue-300 pb-2">اطلاعات تماس</h2>
+            
+            <!-- تلفن مدیر عامل -->
+            <a href="tel:+989122727924" class="icon-link block p-4 bg-blue-50 hover:bg-blue-100 rounded-xl transition flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="user-check" class="w-6 h-6 text-indigo-600"></i>
+                    <div>
+                        <p class="font-bold text-gray-800">مهندس سعید گلیجانی مقدم (مدیر عامل)</p>
+                        <p class="text-blue-600 text-xl font-extrabold ltr-text" dir="ltr">+98 912 272 7924</p>
+                    </div>
+                </div>
+                <i data-lucide="phone" class="w-6 h-6 text-blue-600 flex-shrink-0"></i>
+            </a>
+
+            <!-- تلفن دفتر -->
+            <a href="tel:+989370454525" class="icon-link block p-4 bg-blue-50 hover:bg-blue-100 rounded-xl transition flex items-center justify-between shadow-sm">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="clipboard-list" class="w-6 h-6 text-green-600"></i>
+                    <div>
+                        <p class="font-bold text-gray-800">سعید پروانه (تلفن دفتر)</p>
+                        <p class="text-blue-600 text-xl font-extrabold ltr-text" dir="ltr">+98 937 045 4525</p>
+                    </div>
+                </div>
+                <i data-lucide="phone" class="w-6 h-6 text-blue-600 flex-shrink-0"></i>
+            </a>
+        </div>
+        
+        <!-- --- نشانی سردخانه --- -->
+        <div class="space-y-4 pt-4 border-t border-blue-100">
+            <h2 class="text-2xl font-extrabold text-blue-700 border-b-2 border-blue-300 pb-2">نشانی سردخانه</h2>
+            <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
+                <i data-lucide="map-pin" class="w-6 h-6 text-red-500 mt-1 flex-shrink-0"></i>
+                <p class="text-gray-700 leading-relaxed">
+                    تنکابن ( شهسوار) جاده کشکو به سلیمان آباد ، جنب پل قریب و رودخانه تیرم ، سردخانه تیرم ( مقدم ) .
+                </p>
+            </div>
+        </div>
+
+        <!-- --- شبکه‌های اجتماعی و مسیریابی --- -->
+        <div class="space-y-4 pt-4 border-t border-blue-100">
+            <h2 class="text-2xl font-extrabold text-blue-700 border-b-2 border-blue-300 pb-2">شبکه‌های اجتماعی و مسیریابی</h2>
+
+            <div class="grid grid-cols-1 gap-3">
+                <!-- اینستاگرام -->
+                <a href="https://Instagram.com/tiromcool" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-purple-100 hover:bg-purple-200 shadow-sm">
+                    <i data-lucide="instagram" class="w-6 h-6 text-purple-600"></i>
+                    <span class="font-medium text-gray-800">🟣 صفحه رسمی شرکت و سردخانه تیرم در اینستاگرام</span>
+                </a>
+
+                <!-- تلگرام -->
+                <a href="https://t.me/tiromcool" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-blue-100 hover:bg-blue-200 shadow-sm">
+                    <i data-lucide="send" class="w-6 h-6 text-blue-600"></i>
+                    <span class="font-medium text-gray-800">🔵 کانال تلگرام تیرم</span>
+                </a>
+
+                <!-- واتس اپ -->
+                <a href="https://chat.whatsapp.com/LaBgSRtP8wxK0QZbe2SUME?mode=ems_wa_t" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-green-100 hover:bg-green-200 shadow-sm">
+                    <i data-lucide="message-square" class="w-6 h-6 text-green-600"></i>
+                    <span class="font-medium text-gray-800">🟢 صفحه واتس اپ تیرم</span>
+                </a>
+
+                <!-- گوگل مپ -->
+                <a href="https://maps.google.com/?cid=15309281493284918832&entry=gps" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-gray-100 hover:bg-gray-200 shadow-sm">
+                    <i data-lucide="map" class="w-6 h-6 text-red-500"></i>
+                    <span class="font-medium text-gray-800">⚪️ آدرس سردخانه تیرم روی گوگل مپ</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- بخش دکمه اشتراک‌گذاری پایین -->
+        <button id="shareButtonBottom" class="share-button w-full bg-blue-600 text-white p-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 text-lg">
+            <i data-lucide="share-2" class="w-5 h-5"></i>
+            اشتراک‌گذاری این کارت
+        </button>
+
+        <!-- بخش کپی رایت و طراح -->
+        <div class="text-center pt-4 border-t border-blue-100">
+            <p class="text-xs text-gray-500">
+                طراحی توسط سعیدپروانه : <a href="https://instagram.com/saeidparvaneh" target="_blank" class="text-blue-600 hover:text-blue-800 font-bold">@saeidparvaneh</a>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- اسکریپت‌های جاوا اسکریپت -->
+    <script>
+        // فعال‌سازی آیکون‌های لوسید
+        lucide.createIcons();
+
+        // تابع اشتراک‌گذاری
+        function shareCard() {
+            const title = "سردخانه تیرم - کارت ویزیت آنلاین";
+            const text = `
+سردخانه تیرم در تنکابن
+مدیر عامل: مهندس سعید گلیجانی مقدم (+989122727924)
+تلفن دفتر (سعید پروانه): (+989370454525)
+
+آدرس: تنکابن (شهسوار)، جاده کشکو به سلیمان آباد، جنب پل قریب، سردخانه تیرم.
+
+لینک کارت ویزیت کامل: ${window.location.href}
+`;
+            
+            const shareData = {
+                title: title,
+                text: text,
+                url: window.location.href, // اشتراک‌گذاری لینک همین صفحه
+            };
+
+            // استفاده از API native اشتراک‌گذاری
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => console.log('محتوا با موفقیت به اشتراک گذاشته شد.'))
+                    .catch((error) => {
+                        // در صورت کنسل شدن توسط کاربر یا خطای دیگر
+                        console.error('خطا در اشتراک‌گذاری:', error);
+                        showNotification('اشتراک‌گذاری انجام نشد. می‌توانید لینک را کپی کنید.', 'error');
+                    });
+            } else {
+                // فال‌بک (Fallback) برای مرورگرهایی که از navigator.share پشتیبانی نمی‌کنند
+                fallbackCopy(shareData.url, 'لینک کارت ویزیت در کلیپ‌بورد کپی شد.');
+            }
+        }
+
+        // تابع فال‌بک برای کپی کردن متن
+        function fallbackCopy(textToCopy, successMessage) {
+            // ساخت یک المنت موقت برای کپی
+            const tempInput = document.createElement('textarea');
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            
+            try {
+                document.execCommand('copy');
+                showNotification(successMessage, 'success');
+            } catch (err) {
+                console.error('کپی کردن ناموفق بود:', err);
+                showNotification('خطا: کپی کردن با مشکل مواجه شد. لطفاً به صورت دستی کپی کنید.', 'error');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // تابع نمایش نوتیفیکیشن
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.className = `fixed top-5 left-1/2 transform -translate-x-1/2 p-4 rounded-xl text-white shadow-lg transition-opacity duration-300 z-50`;
+            
+            if (type === 'success') {
+                notification.classList.add('bg-green-600');
+            } else if (type === 'error') {
+                notification.classList.add('bg-red-600');
+            } else {
+                notification.classList.add('bg-gray-800');
+            }
+
+            document.body.appendChild(notification);
+            
+            // محو شدن پس از 3 ثانیه
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // اتصال توابع به دکمه‌ها
+        document.getElementById('shareButtonTop').addEventListener('click', shareCard);
+        document.getElementById('shareButtonBottom').addEventListener('click', shareCard);
+
+    </script>
+</body>
+</html>
