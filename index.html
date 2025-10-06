@@ -11,24 +11,31 @@
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background-color: #f0f8ff; /* رنگ پس‌زمینه بسیار روشن */
+            background-color: #f0f8ff; /* Light blue background */
         }
         .card-container {
-            box-shadow: 0 10px 30px rgba(0, 70, 150, 0.1);
-            background: linear-gradient(145deg, #ffffff, #e6f7ff); /* گرادیانت ملایم */
+            /* سایه بزرگ و شیک برای کارت اصلی */
+            box-shadow: 0 20px 50px rgba(0, 70, 150, 0.25); 
+            background: linear-gradient(135deg, #ffffff 50%, #f7fcff); /* Soft gradient */
         }
         .share-button {
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .share-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+            transform: translateY(-3px);
+            /* سایه آبی رنگ برای دکمه */
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.5); 
         }
         .icon-link {
-            transition: transform 0.2s;
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.3s, ring 0.2s;
         }
         .icon-link:hover {
-            transform: scale(1.05);
+            /* افکت مدرن: کمی حرکت و برجستگی نورانی */
+            transform: translateX(3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+        }
+        .ltr-text {
+            direction: ltr;
         }
     </style>
     <!-- آیکون‌های لوسید برای ظاهر مدرن -->
@@ -36,107 +43,114 @@
 </head>
 <body class="p-4 flex flex-col items-center min-h-screen">
 
-    <div class="card-container w-full max-w-lg mx-auto rounded-3xl p-6 md:p-8 space-y-8 border border-blue-200">
+    <div class="card-container w-full max-w-xl mx-auto rounded-3xl p-6 md:p-10 space-y-8 border-2 border-blue-300 shadow-2xl">
 
         <!-- بخش دکمه اشتراک‌گذاری بالا -->
-        <button id="shareButtonTop" class="share-button w-full bg-blue-600 text-white p-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 text-lg">
-            <i data-lucide="share-2" class="w-5 h-5"></i>
+        <!-- افزودن سایه رنگی به دکمه برای برجستگی بیشتر -->
+        <button id="shareButtonTop" class="share-button w-full bg-blue-600 text-white p-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 text-xl tracking-wider shadow-xl shadow-blue-500/50">
+            <i data-lucide="share-2" class="w-6 h-6"></i>
             اشتراک‌گذاری این کارت
         </button>
 
         <!-- بخش لوگو و عنوان -->
-        <div class="text-center">
-            <!-- تصویر Placeholder برای لوگو - جایگزین کردن با لینک مستقیم لوگوی "سردخانه تیرم" -->
-            <img src="https://placehold.co/400x150/0047AB/ffffff?text=سردخانه+تیرم"
-                 onerror="this.onerror=null;this.src='https://placehold.co/400x150/0047AB/ffffff?text=سردخانه+تیرم'"
-                 alt="لوگوی سردخانه تیرم"
-                 class="w-full h-auto max-h-36 object-cover mx-auto rounded-xl mb-4 border-4 border-blue-500 shadow-md">
+        <div class="text-center space-y-4">
             
-            <h1 class="text-4xl font-black text-blue-900 mt-2 mb-1">سردخانه تیرم</h1>
-            <p class="text-lg text-gray-600">خدمات نوین نگهداری محصولات کشاورزی</p>
+            <!-- ************************************************************************* -->
+            <!-- ********* لینک لوگوی سردخانه تیرم با موفقیت قرار گرفت ********* -->
+            <!-- آدرس تصویر لوگوی شما: https://i.ibb.co/pBWch21N/Screenshot-Gallery.png -->
+            <img src="https://i.ibb.co/pBWch21N/Screenshot-Gallery.png" 
+                 alt="لوگوی سردخانه تیرم"
+                 class="w-40 h-40 object-contain mx-auto rounded-full border-4 border-blue-400 p-2 shadow-2xl mb-4 bg-white"
+                 style="aspect-ratio: 1/1;">
+            <!-- ************************************************************************* -->
+
+            <h1 class="text-5xl font-extrabold text-blue-900 mt-2">سردخانه تیرم</h1>
+            <p class="text-lg text-gray-600 border-b pb-4 border-blue-100">خدمات نوین نگهداری محصولات کشاورزی</p>
         </div>
 
         <!-- --- اطلاعات تماس --- -->
-        <div class="space-y-4 pt-4 border-t border-blue-100">
-            <h2 class="text-2xl font-extrabold text-blue-700 border-b-2 border-blue-300 pb-2">اطلاعات تماس</h2>
+        <div class="space-y-4 pt-4 border-t border-blue-200">
+            <h2 class="text-2xl font-extrabold text-blue-700 pb-2">اطلاعات تماس</h2>
             
-            <!-- تلفن مدیر عامل -->
-            <a href="tel:+989122727924" class="icon-link block p-4 bg-blue-50 hover:bg-blue-100 rounded-xl transition flex items-center justify-between shadow-sm">
+            <!-- تلفن مدیر عامل - کارت کوچک مدرن -->
+            <a href="tel:+989122727924" class="icon-link block p-4 bg-white hover:bg-blue-50 rounded-xl flex items-center justify-between shadow-lg border border-gray-100 hover:ring-2 hover:ring-blue-400">
                 <div class="flex items-center gap-3">
-                    <i data-lucide="user-check" class="w-6 h-6 text-indigo-600"></i>
+                    <i data-lucide="user-check" class="w-7 h-7 text-indigo-600 flex-shrink-0"></i>
                     <div>
                         <p class="font-bold text-gray-800">مهندس سعید گلیجانی مقدم (مدیر عامل)</p>
-                        <p class="text-blue-600 text-xl font-extrabold ltr-text" dir="ltr">+98 912 272 7924</p>
+                        <p class="text-blue-600 text-2xl font-black ltr-text" dir="ltr">+98 912 272 7924</p>
                     </div>
                 </div>
-                <i data-lucide="phone" class="w-6 h-6 text-blue-600 flex-shrink-0"></i>
+                <i data-lucide="phone" class="w-7 h-7 text-blue-600 flex-shrink-0"></i>
             </a>
 
-            <!-- تلفن دفتر -->
-            <a href="tel:+989370454525" class="icon-link block p-4 bg-blue-50 hover:bg-blue-100 rounded-xl transition flex items-center justify-between shadow-sm">
+            <!-- تلفن دفتر - کارت کوچک مدرن -->
+            <a href="tel:+989370454525" class="icon-link block p-4 bg-white hover:bg-blue-50 rounded-xl flex items-center justify-between shadow-lg border border-gray-100 hover:ring-2 hover:ring-blue-400">
                 <div class="flex items-center gap-3">
-                    <i data-lucide="clipboard-list" class="w-6 h-6 text-green-600"></i>
+                    <i data-lucide="clipboard-list" class="w-7 h-7 text-green-600 flex-shrink-0"></i>
                     <div>
                         <p class="font-bold text-gray-800">سعید پروانه (تلفن دفتر)</p>
-                        <p class="text-blue-600 text-xl font-extrabold ltr-text" dir="ltr">+98 937 045 4525</p>
+                        <p class="text-blue-600 text-2xl font-black ltr-text" dir="ltr">+98 937 045 4525</p>
                     </div>
                 </div>
-                <i data-lucide="phone" class="w-6 h-6 text-blue-600 flex-shrink-0"></i>
+                <i data-lucide="phone" class="w-7 h-7 text-blue-600 flex-shrink-0"></i>
             </a>
         </div>
         
         <!-- --- نشانی سردخانه --- -->
-        <div class="space-y-4 pt-4 border-t border-blue-100">
-            <h2 class="text-2xl font-extrabold text-blue-700 border-b-2 border-blue-300 pb-2">نشانی سردخانه</h2>
-            <div class="p-4 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
-                <i data-lucide="map-pin" class="w-6 h-6 text-red-500 mt-1 flex-shrink-0"></i>
-                <p class="text-gray-700 leading-relaxed">
+        <div class="space-y-4 pt-4 border-t border-blue-200">
+            <h2 class="text-2xl font-extrabold text-blue-700 pb-2">نشانی سردخانه</h2>
+            <!-- باکس آدرس - کارت کوچک مدرن -->
+            <div class="p-5 bg-white rounded-xl border border-gray-100 shadow-lg flex items-start gap-3 transition hover:ring-2 hover:ring-blue-400">
+                <i data-lucide="map-pin" class="w-7 h-7 text-red-500 mt-1 flex-shrink-0"></i>
+                <p class="text-gray-700 leading-relaxed text-lg">
                     تنکابن ( شهسوار) جاده کشکو به سلیمان آباد ، جنب پل قریب و رودخانه تیرم ، سردخانه تیرم ( مقدم ) .
                 </p>
             </div>
         </div>
 
         <!-- --- شبکه‌های اجتماعی و مسیریابی --- -->
-        <div class="space-y-4 pt-4 border-t border-blue-100">
-            <h2 class="text-2xl font-extrabold text-blue-700 border-b-2 border-blue-300 pb-2">شبکه‌های اجتماعی و مسیریابی</h2>
+        <div class="space-y-4 pt-4 border-t border-blue-200">
+            <h2 class="text-2xl font-extrabold text-blue-700 pb-2">شبکه‌های اجتماعی و مسیریابی</h2>
 
-            <div class="grid grid-cols-1 gap-3">
-                <!-- اینستاگرام -->
-                <a href="https://Instagram.com/tiromcool" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-purple-100 hover:bg-purple-200 shadow-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- اینستاگرام - کارت کوچک مدرن -->
+                <a href="https://Instagram.com/tiromcool" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-purple-100 hover:bg-purple-200 shadow-lg hover:ring-2 hover:ring-purple-400">
                     <i data-lucide="instagram" class="w-6 h-6 text-purple-600"></i>
-                    <span class="font-medium text-gray-800">🟣 صفحه رسمی شرکت و سردخانه تیرم در اینستاگرام</span>
+                    <span class="font-medium text-gray-800 text-sm">صفحه رسمی اینستاگرام</span>
                 </a>
 
-                <!-- تلگرام -->
-                <a href="https://t.me/tiromcool" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-blue-100 hover:bg-blue-200 shadow-sm">
+                <!-- تلگرام - کارت کوچک مدرن -->
+                <a href="https://tme/tiromcool" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-blue-100 hover:bg-blue-200 shadow-lg hover:ring-2 hover:ring-blue-400">
                     <i data-lucide="send" class="w-6 h-6 text-blue-600"></i>
-                    <span class="font-medium text-gray-800">🔵 کانال تلگرام تیرم</span>
+                    <span class="font-medium text-gray-800 text-sm">کانال تلگرام تیرم</span>
                 </a>
 
-                <!-- واتس اپ -->
-                <a href="https://chat.whatsapp.com/LaBgSRtP8wxK0QZbe2SUME?mode=ems_wa_t" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-green-100 hover:bg-green-200 shadow-sm">
+                <!-- واتس اپ - کارت کوچک مدرن -->
+                <a href="https://chat.whatsapp.com/LaBgSRtP8wxK0QZbe2SUME?mode=ems_wa_t" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-green-100 hover:bg-green-200 shadow-lg hover:ring-2 hover:ring-green-400">
                     <i data-lucide="message-square" class="w-6 h-6 text-green-600"></i>
-                    <span class="font-medium text-gray-800">🟢 صفحه واتس اپ تیرم</span>
+                    <span class="font-medium text-gray-800 text-sm">صفحه واتس اپ تیرم</span>
                 </a>
 
-                <!-- گوگل مپ -->
-                <a href="https://maps.google.com/?cid=15309281493284918832&entry=gps" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-gray-100 hover:bg-gray-200 shadow-sm">
+                <!-- گوگل مپ - کارت کوچک مدرن -->
+                <a href="https://maps.google.com/?cid=15309281493284918832&entry=gps" target="_blank" class="icon-link flex items-center gap-3 p-3 rounded-xl bg-gray-100 hover:bg-gray-200 shadow-lg hover:ring-2 hover:ring-red-400">
                     <i data-lucide="map" class="w-6 h-6 text-red-500"></i>
-                    <span class="font-medium text-gray-800">⚪️ آدرس سردخانه تیرم روی گوگل مپ</span>
+                    <span class="font-medium text-gray-800 text-sm">آدرس سردخانه روی گوگل مپ</span>
                 </a>
             </div>
         </div>
 
         <!-- بخش دکمه اشتراک‌گذاری پایین -->
-        <button id="shareButtonBottom" class="share-button w-full bg-blue-600 text-white p-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 text-lg">
-            <i data-lucide="share-2" class="w-5 h-5"></i>
+        <!-- افزودن سایه رنگی به دکمه برای برجستگی بیشتر -->
+        <button id="shareButtonBottom" class="share-button w-full bg-blue-600 text-white p-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 text-xl tracking-wider shadow-xl shadow-blue-500/50">
+            <i data-lucide="share-2" class="w-6 h-6"></i>
             اشتراک‌گذاری این کارت
         </button>
 
         <!-- بخش کپی رایت و طراح -->
         <div class="text-center pt-4 border-t border-blue-100">
             <p class="text-xs text-gray-500">
-                طراحی توسط سعیدپروانه : <a href="https://instagram.com/saeidparvaneh" target="_blank" class="text-blue-600 hover:text-blue-800 font-bold">@saeidparvaneh</a>
+                طراحی توسط سعید پروانه : <a href="https://instagram.com/saeidparvaneh" target="_blank" class="text-blue-600 hover:text-blue-800 font-extrabold">@saeidparvaneh</a>
             </p>
         </div>
 
@@ -185,12 +199,16 @@
         function fallbackCopy(textToCopy, successMessage) {
             // ساخت یک المنت موقت برای کپی
             const tempInput = document.createElement('textarea');
+            // تنظیم استایل برای عدم نمایش ورودی
+            tempInput.style.position = 'absolute';
+            tempInput.style.left = '-9999px';
             tempInput.value = textToCopy;
             document.body.appendChild(tempInput);
             tempInput.select();
             
             try {
-                document.execCommand('copy');
+                // استفاده از document.execCommand('copy') برای کپی در iFrame
+                document.execCommand('copy'); 
                 showNotification(successMessage, 'success');
             } catch (err) {
                 console.error('کپی کردن ناموفق بود:', err);
@@ -203,7 +221,7 @@
         function showNotification(message, type) {
             const notification = document.createElement('div');
             notification.textContent = message;
-            notification.className = `fixed top-5 left-1/2 transform -translate-x-1/2 p-4 rounded-xl text-white shadow-lg transition-opacity duration-300 z-50`;
+            notification.className = `fixed top-5 left-1/2 transform -translate-x-1/2 p-4 rounded-xl text-white shadow-xl transition-opacity duration-300 z-50`;
             
             if (type === 'success') {
                 notification.classList.add('bg-green-600');
@@ -229,3 +247,4 @@
     </script>
 </body>
 </html>
+
