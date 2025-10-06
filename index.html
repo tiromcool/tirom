@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- ************* بخش جدید SEO ************* -->
+    <!-- ************* بخش SEO (برای دیده شدن در گوگل) ************* -->
     <title>سردخانه تیرم | نگهداری تخصصی محصولات کشاورزی در تنکابن - tiromcool</title>
     <meta name="description" content="سردخانه تیرم (مهندس سعید گلیجانی مقدم) ارائه دهنده خدمات نگهداری تخصصی میوه و محصولات کشاورزی در تنکابن، شهسوار، جاده کشکو. تماس: ۰۹۱۲۲۷۲۷۹۲۴.">
     <meta name="keywords" content="سردخانه تیرم, tiromcool, سردخانه تنکابن, سردخانه شهسوار, سردخانه میوه تنکابن, نگهداری محصولات کشاورزی مازندران, سردخانه گلیجانی مقدم, سعید پروانه">
@@ -60,7 +60,7 @@
         <!-- بخش لوگو و عنوان -->
         <div class="text-center space-y-4">
             
-            <!-- ********* لینک لوگوی سردخانه تیرم ********* -->
+            <!-- ********* لینک لوگوی سردخانه تیرم (لوگوی شما) ********* -->
             <img src="https://i.ibb.co/pBWch21N/Screenshot-Gallery.png" 
                  alt="لوگوی سردخانه تیرم"
                  class="w-40 h-40 object-contain mx-auto rounded-full border-4 border-blue-400 p-2 shadow-2xl mb-4 bg-white"
@@ -72,16 +72,10 @@
             <p class="text-lg text-gray-600 border-b pb-4 border-blue-100">خدمات نوین نگهداری محصولات کشاورزی</p>
         </div>
         
-        <!-- --- بخش نمایش بازدید امروز (جدید) --- -->
-        <div id="visitorCounter" class="p-4 bg-yellow-100 rounded-xl shadow-inner border border-yellow-300 flex items-center justify-center gap-3">
-            <i data-lucide="eye" class="w-6 h-6 text-yellow-700"></i>
-            <span class="text-gray-800 font-bold">بازدید امروز:</span>
-            <span id="visitsToday" class="text-2xl font-black text-yellow-800">...</span>
-            <span class="text-gray-500 text-sm mr-2">نفر</span>
-        </div>
-        <!-- --------------------------------------- -->
+        <!-- *** بخش شمارنده بازدید حذف شد *** -->
 
-        <!-- --- اطلاعات تماس (شروع بخش h2) --- -->
+
+        <!-- --- اطلاعات تماس --- -->
         <div class="space-y-4 pt-4 border-t border-blue-200">
             <h2 class="text-2xl font-extrabold text-blue-700 pb-2">اطلاعات تماس</h2>
             
@@ -117,7 +111,7 @@
             <div class="p-5 bg-white rounded-xl border border-gray-100 shadow-lg flex items-start gap-3 transition hover:ring-2 hover:ring-blue-400">
                 <i data-lucide="map-pin" class="w-7 h-7 text-red-500 mt-1 flex-shrink-0"></i>
                 <p class="text-gray-700 leading-relaxed text-lg">
-                    **تنکابن** ( شهسوار) جاده کشکو به **سلیمان آباد** ، جنب پل قریب و رودخانه **تیرم** ، **سردخانه تیرم** (**مقدم**) .
+                    تنکابن ( شهسوار) جاده کشکو به سلیمان آباد ، جنب پل قریب و رودخانه تیرم ، سردخانه تیرم ( مقدم ) .
                 </p>
             </div>
         </div>
@@ -168,143 +162,13 @@
 
     </div>
 
-    <!-- اسکریپت‌های جاوا اسکریپت و فایربیس -->
+    <!-- اسکریپت‌های جاوا اسکریپت (بدون فایربیس) -->
     <script type="module">
-        // --------------------------------------------------------------------------------
-        // 1. تنظیمات و توابع پایه فایربیس
-        // --------------------------------------------------------------------------------
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, onSnapshot, setDoc, increment, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // تنظیمات فایربیس (محیط Canvas این متغیرها را فراهم می‌کند)
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-        let app;
-        let db;
-        let auth;
-        let userId = null;
-
-        // تابع کمکی برای فرمت تاریخ به صورت YYYY-MM-DD
-        function getTodayDateString() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            return `${year}-${month}-${day}`;
-        }
-
-        // تابع اصلی برای مقداردهی اولیه فایربیس
-        async function initializeFirebase() {
-            try {
-                app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-
-                // setLogLevel('debug'); // برای دیدن لاگ‌های فایربیس در کنسول
-
-                // احراز هویت (Authentication)
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        userId = user.uid;
-                        console.log('User signed in. UID:', userId);
-                        
-                        // پس از احراز هویت، شمارنده بازدید را آغاز کنید
-                        updateVisitorCount();
-                        startCounterListener();
-                    } else {
-                        console.log('No user signed in.');
-                        // اگر احراز هویت نشد، همچنان سعی می‌کنیم بازدید رو ثبت کنیم
-                        updateVisitorCount();
-                        startCounterListener();
-                    }
-                });
-
-            } catch (error) {
-                console.error("خطا در مقداردهی اولیه فایربیس:", error);
-                showNotification('خطا در اتصال به پایگاه داده.', 'error');
-            }
-        }
-
-        // --------------------------------------------------------------------------------
-        // 2. منطق شمارنده بازدید
-        // --------------------------------------------------------------------------------
-
-        const VISITS_COLLECTION = 'daily_visits';
-
-        /**
-         * مرجع سند شمارنده بازدید امروز را برمی‌گرداند.
-         * مسیر: /artifacts/{appId}/public/data/daily_visits/{YYYY-MM-DD}
-         */
-        function getDailyVisitDocRef() {
-            const today = getTodayDateString();
-            const path = `/artifacts/${appId}/public/data/${VISITS_COLLECTION}/${today}`;
-            return doc(db, path);
-        }
-
-        /**
-         * شمارنده بازدید امروز را در فایربیس به صورت اتمی (Atomic) افزایش می‌دهد.
-         */
-        async function updateVisitorCount() {
-            if (!db) return;
-
-            const visitRef = getDailyVisitDocRef();
-            const docData = {
-                count: increment(1),
-                lastUpdate: serverTimestamp()
-            };
-
-            try {
-                // استفاده از setDoc با merge: true برای افزایش یا ایجاد سند در صورت عدم وجود
-                await setDoc(visitRef, docData, { merge: true });
-                console.log("شمارنده بازدید امروز با موفقیت افزایش یافت.");
-            } catch (error) {
-                console.error("خطا در افزایش شمارنده بازدید:", error);
-            }
-        }
-
-        /**
-         * به صورت لحظه‌ای به شمارنده بازدید امروز گوش می‌دهد و آن را در UI نمایش می‌دهد.
-         */
-        function startCounterListener() {
-            if (!db) return;
-            
-            const visitRef = getDailyVisitDocRef();
-            const visitsTodayElement = document.getElementById('visitsToday');
-
-            // استفاده از onSnapshot برای دریافت به‌روزرسانی‌های لحظه‌ای
-            onSnapshot(visitRef, (doc) => {
-                if (doc.exists()) {
-                    const data = doc.data();
-                    const currentCount = data.count || 0;
-                    visitsTodayElement.textContent = currentCount.toLocaleString('fa-IR'); // نمایش به فارسی
-                } else {
-                    // اگر هنوز سندی برای امروز ثبت نشده (احتمالا در لحظه اول)
-                    visitsTodayElement.textContent = '۱'; 
-                }
-            }, (error) => {
-                console.error("خطا در گوش دادن به شمارنده بازدید:", error);
-                visitsTodayElement.textContent = 'خطا';
-            });
-        }
-
-        // --------------------------------------------------------------------------------
-        // 3. توابع عمومی و رویدادها
-        // --------------------------------------------------------------------------------
 
         // فعال‌سازی آیکون‌های لوسید
         lucide.createIcons();
 
-        // تابع اشتراک‌گذاری (همان توابع قبلی)
+        // تابع اشتراک‌گذاری
         function shareCard() {
             const title = "سردخانه تیرم - کارت ویزیت آنلاین";
             const text = `
@@ -335,6 +199,7 @@
             }
         }
 
+        // تابع کمکی برای کپی کردن
         function fallbackCopy(textToCopy, successMessage) {
             const tempInput = document.createElement('textarea');
             tempInput.style.position = 'absolute';
@@ -353,6 +218,7 @@
             document.body.removeChild(tempInput);
         }
 
+        // تابع نمایش نوتیفیکیشن
         function showNotification(message, type) {
             const notification = document.createElement('div');
             notification.textContent = message;
@@ -377,9 +243,6 @@
         // اتصال توابع به دکمه‌ها
         document.getElementById('shareButtonTop').addEventListener('click', shareCard);
         document.getElementById('shareButtonBottom').addEventListener('click', shareCard);
-
-        // شروع مقداردهی اولیه فایربیس پس از بارگذاری کامل صفحه
-        initializeFirebase();
 
     </script>
 </body>
